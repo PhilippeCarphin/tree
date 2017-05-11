@@ -26,6 +26,7 @@ class Node {
 			}
 		}
 		int height;
+		int mainline_height;
 		int depth;
 		int i;
 		int j;
@@ -57,13 +58,12 @@ class DisplayVisitor : public Visitor {
 class AssignmentVisitor : public Visitor {
 	public:
 		AssignmentVisitor()
-		:depth(0), height(0)
+		:depth(0)
 		{}
 		~AssignmentVisitor(){};
 
 		void set_height(Node *n);
 		void visit(Node *n);
-		int height;
 		int depth;
 };
 
@@ -73,15 +73,13 @@ class AssignmentVisitor : public Visitor {
 *******************************************************************************/
 void AssignmentVisitor::visit(Node *n)
 {
-	n->depth = depth;
-	depth++;
-
+	n->depth = this->depth;
+	this->depth++;
 	for(Node *c : n->children){
-		c->accept_visitor(this);
+		visit(c);
 	}
 	set_height(n);
-
-	depth--;
+	this->depth--;
 
 }
 
@@ -96,6 +94,7 @@ void AssignmentVisitor::set_height(Node *n)
 				max = c->height;
 			}
 		}
+		n->mainline_height = n->next()->mainline_height + 1;
 		n->height = max + 1;
 	}
 }
@@ -122,7 +121,7 @@ class GridVisitor : public Visitor {
 			}
 			n->i = max_occupied_i + 1;
 			if(n->number == 30)
-				std::cout << "Max_occupied_i " << max_occupied_i << std::endl;
+				;//std::cout << "Max_occupied_i " << max_occupied_i << std::endl;
 			g.elem(n->i, n->j) = n->number;
 
 		}

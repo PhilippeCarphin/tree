@@ -27,17 +27,25 @@ Node *make_tree()
 
 	// Add a four node variation starting at node number 2:
 	current = root->next()->next();
-	for(int i = 0; i < 4; ++i){
+	current->add_child();
+	current->add_child();
+	current = current->child(1);
+	for(int i = 0; i < 3; ++i){
 		current->add_child();
 		current = current->next();
 	}
 
 	// Add a four node variation starting at node number 4:
 	current = root->next()->next()->next()->next();
-	for(int i = 0; i < 4; ++i){
+	current->add_child();
+	current->add_child();
+	current = current->child(1);
+	for(int i = 0; i < 3; ++i){
 		current->add_child();
 		current = current->next();
 	}
+
+	return root;
 
 }
 void Node::show(){
@@ -79,14 +87,14 @@ void Node::accept_visitor(Visitor *v)
 int main()
 {
 	std::cout << "DONE" << std::endl;
-	Node *tree = Node::make_test_tree();
+	Node *tree = make_tree();
 	AssignmentVisitor av;
 	av.visit(tree);
 	DisplayVisitor dv;
 	// dv.visit(tree);
 	GridVisitor gv;
 	gv.visit(tree);
-	// dv.visit(tree);
+	dv.visit(tree);
 	gv.g.show();
 
 	return 0;
