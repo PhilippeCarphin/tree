@@ -85,7 +85,13 @@ void Grid<T>::show()
 {
 	for(int i = 0; i < n_rows; ++i){
 		for(int j = 0; j < row_size; ++j){
-			std::cout << elem(i,j) << " ";
+			if(elem(i,j) == -1){
+				std::cout << "    ";
+				continue;
+			}
+			if(elem(i,j) > -1 && elem(i,j) < 10)
+				std::cout << " ";
+			std::cout << elem(i,j) << "  ";
 		}
 		std::cout << std::endl;
 	}

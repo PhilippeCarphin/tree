@@ -135,10 +135,46 @@ class GridVisitor : public Visitor {
 				}
 			}
 			n->i = max_occupied_i + 1;
-			if(n->number == 30)
-				;//std::cout << "Max_occupied_i " << max_occupied_i << std::endl;
 			g.elem(n->i, n->j) = n->number;
 
 		}
 };
+
+/*******************************************************************************
+ * To solve the problem that was occurring, I make it so that every node is at
+ * least as low in the grid as it's parent.
+ * See pictures in you messenger.
+*******************************************************************************/
+class Node {
+	public:
+		...
+		void add_child(Node *n){ children.push_back(n);n->parent = this;}
+		void add_child(){children.push_back(new Node(this));}
+		Node *parent = nullptr;
+		...
+
+};
+class GridVisitor : public Visitor {
+	public:
+		Grid<int> g;
+		GridVisitor():g(-1){}
+
+		void do_node(Node *n){
+			n->j = n->depth;
+			int max_occupied_i = -1;
+			for(int j = n->j; j < n->depth + n->height + 1; ++j){
+				if(max_occupied_i < g.max_occupied_i(j)){
+					max_occupied_i = g.max_occupied_i(j);
+				}
+			}
++   		n->i = std::max(
++  				max_occupied_i + 1,
++  				(n->parent != nullptr ? n->parent->i : 0)
++  			);
+			g.elem(n->i, n->j) = n->number;
+
+		}
+};
+
+
 
