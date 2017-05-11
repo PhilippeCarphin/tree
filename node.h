@@ -8,7 +8,7 @@ class Node {
 		Node();
 		Node(Node *parent);
 		Node *next();
-		Node *child(int n);
+		Node *child(size_t n);
 		bool is_leaf(){ return children.size() == 0;}
 		void add_child(Node *n){ children.push_back(n);n->parent = this;}
 		void add_child(){children.push_back(new Node(this));}

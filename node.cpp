@@ -46,9 +46,9 @@ Node *Node::next()
 /*******************************************************************************
  * Returns a selected child of a node
 *******************************************************************************/
-Node *Node::child(int n)
+Node *Node::child(size_t n)
 {
 	if(n < 0)
 		throw std::exception();
-	return (n <= children.size() ? children[n] : nullptr);
+	return (n < children.size() ? children[n] : nullptr);
 }
