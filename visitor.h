@@ -4,23 +4,27 @@
 class Node;
 class Visitor {
 	public:
-		virtual ~Visitor() = 0;
+		virtual ~Visitor() {};
 		virtual void visit(Node *n) = 0;
 };
 
+/*******************************************************************************
+ *
+*******************************************************************************/
 class DisplayVisitor : public Visitor {
 	public:
-		DisplayVisitor();
-		virtual ~DisplayVisitor();
+		DisplayVisitor() : depth(0) { }
+		~DisplayVisitor() {};
 		virtual void visit(Node *n);
 		int depth;
 };
 
+/*******************************************************************************
+ *
+*******************************************************************************/
 class AssignmentVisitor : public Visitor {
 	public:
-		AssignmentVisitor()
-		:depth(0)
-		{}
+		AssignmentVisitor() :depth(0) {}
 		~AssignmentVisitor(){};
 
 		void set_height(Node *n);
@@ -28,6 +32,9 @@ class AssignmentVisitor : public Visitor {
 		int depth;
 };
 
+/*******************************************************************************
+ *
+*******************************************************************************/
 class GridVisitor : public Visitor {
 	public:
 		Grid<int> g;

@@ -17,9 +17,6 @@ void AssignmentVisitor::visit(Node *n)
 
 }
 
-/*******************************************************************************
- *
-*******************************************************************************/
 void AssignmentVisitor::set_height(Node *n)
 {
 	if(n->is_leaf()){
@@ -36,11 +33,9 @@ void AssignmentVisitor::set_height(Node *n)
 	}
 }
 
-
 /*******************************************************************************
  *
 *******************************************************************************/
-
 void GridVisitor::visit(Node *n)
 {
 	do_node(n);
@@ -48,7 +43,9 @@ void GridVisitor::visit(Node *n)
 		visit(c);
 	}
 }
-void GridVisitor::do_node(Node *n){
+
+void GridVisitor::do_node(Node *n)
+{
 	n->j = n->depth;
 	int max_occupied_i = -1;
 	for(int j = n->j; j < n->depth + n->height + 1; ++j){
@@ -60,22 +57,12 @@ void GridVisitor::do_node(Node *n){
 	g.elem(n->i, n->j) = n->number;
 }
 
-Visitor::~Visitor(){}
-
-DisplayVisitor::~DisplayVisitor()
-{
-	std::cout << __FUNCTION__ << std::endl;
-}
-
-DisplayVisitor::DisplayVisitor()
-: depth(0)
-{
-}
 
 /*******************************************************************************
  *
 *******************************************************************************/
-void DisplayVisitor::visit(Node *n){
+void DisplayVisitor::visit(Node *n)
+{
 	for(int i = 0; i < depth; i++){
 		std::cout << " ";
 	}
