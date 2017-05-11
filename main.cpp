@@ -39,15 +39,22 @@ Node *make_tree()
 
 int main()
 {
-	std::cout << "DONE" << std::endl;
 	Node *tree = make_tree();
+	DisplayVisitor dv;
+
+	// Go through the tree and assign depth and height to each node
 	AssignmentVisitor av;
 	av.visit(tree);
-	DisplayVisitor dv;
-	// dv.visit(tree);
+
+	// Once that's done, go through the tree in a depth first search and assing
+	// grid positions to each node
 	GridVisitor gv;
 	gv.visit(tree);
+
+	// Show the tree's data
 	dv.visit(tree);
+
+	// Display the grid of nodes
 	gv.g.show();
 
 	return 0;
