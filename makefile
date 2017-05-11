@@ -1,6 +1,6 @@
 CXXFLAGS += -MMD -std=c++11 -g
 
-SRC = node.cpp visitor.cpp main.cpp
+SRC = $(wildcard *.cpp)
 OBJ = $(SRC:.cpp=.o)
 EXEC = tree
 
