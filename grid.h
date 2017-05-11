@@ -3,7 +3,8 @@
 #include <iostream>
 
 /*******************************************************************************
- *
+ * Implementation of a 2d grid that can grow automatically to accomodate any
+ * number of elements.
 *******************************************************************************/
 template <typename T>
 class Grid {
@@ -22,8 +23,10 @@ class Grid {
 		int n_cols;
 		T default_value;
 };
+
 /*******************************************************************************
- *
+ * For a given column j, returns the maximum occupied line of that column.
+ * Returns -1 if the column is completely free.
 *******************************************************************************/
 template <typename T>
 int Grid<T>::max_occupied_i(int column)
@@ -40,7 +43,7 @@ int Grid<T>::max_occupied_i(int column)
 
 
 /*******************************************************************************
- *
+ * Cosntructor
 *******************************************************************************/
 template<typename T>
 Grid<T>::Grid(T _default_value)
@@ -58,7 +61,7 @@ Grid<T>::Grid(T _default_value)
 
 
 /*******************************************************************************
- *
+ * Element accessor for two dimensionnal grid
 *******************************************************************************/
 template<typename T>
 T& Grid<T>::elem(int i, int j)
@@ -78,7 +81,7 @@ T& Grid<T>::elem(int i, int j)
 }
 
 /*******************************************************************************
- *
+ * Displays the grid
 *******************************************************************************/
 template<typename T>
 void Grid<T>::show()
@@ -99,7 +102,8 @@ void Grid<T>::show()
 
 
 /*******************************************************************************
- *
+ * Grow the grid to the given dimensions.  Reallocates memory, copies and
+ * deletes the old, then sets the new dimensions of the grid
 *******************************************************************************/
 template<typename T>
 void Grid<T>::grow(int new_n_rows, int new_n_cols)

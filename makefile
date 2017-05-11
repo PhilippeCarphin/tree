@@ -6,9 +6,8 @@ EXEC = tree
 
 .PHONY:clean
 
-all:main.exe
-run:main.exe
-	./main.exe
+all:test
+
 $(EXEC):$(OBJ)
 	$(CXX) $(LDFLAGS) -o $@ $(OBJ)
 

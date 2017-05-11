@@ -1,4 +1,6 @@
 #include <iostream>
+#include "grid.h"
+
 class Node;
 class Visitor {
 	public:
