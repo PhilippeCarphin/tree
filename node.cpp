@@ -48,7 +48,5 @@ Node *Node::next()
 *******************************************************************************/
 Node *Node::child(size_t n)
 {
-	if(n < 0)
-		throw std::exception();
 	return (n < children.size() ? children[n] : nullptr);
 }
