@@ -55,8 +55,6 @@ Grid<T>::Grid(T _default_value)
 	n_cols = 0;
 	row_size = 0;
 	default_value = _default_value;
-
-
 }
 
 
@@ -99,7 +97,6 @@ void Grid<T>::show()
 		std::cout << std::endl;
 	}
 }
-
 
 /*******************************************************************************
  * Grow the grid to the given dimensions.  Reallocates memory, copies and
@@ -145,4 +142,4 @@ int main(void)
 }
 #endif
 
-#endif
+#endif // _GRID_H_

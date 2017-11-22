@@ -7,13 +7,12 @@ int Node::n_instances = 0;
  * Display info of a node
 *******************************************************************************/
 void Node::show(){
-	// std::cout << __FUNCTION__ << std::endl
-	// 	<< "  Number = " << number // 	<< "  id = " << id << std::endl;
 	std::cout << number
 		      << " : Depth=" << depth
 			  << "  Height=" << height
 			  << " (i,j) = (" << i << ", " << j
-			  << "), parent : " << (parent == nullptr ? -1 : parent->number) << std::endl;
+			  << "), parent : " << (parent == nullptr ? -1 : parent->number)
+			  << std::endl;
 }
 
 /*******************************************************************************
@@ -26,7 +25,7 @@ Node::Node()
 }
 
 /*******************************************************************************
- *
+ * Constructor with parent parameter
 *******************************************************************************/
 Node::Node(Node *parent)
 :parent(parent)
