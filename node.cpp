@@ -10,9 +10,9 @@ void Node::show(){
 	// std::cout << __FUNCTION__ << std::endl
 	// 	<< "  Number = " << number // 	<< "  id = " << id << std::endl;
 	std::cout << number
-		      << " : Depth=" << depth 
-			  << "  Height=" << height 
-			  << " (i,j) = (" << i << ", " << j 
+		      << " : Depth=" << depth
+			  << "  Height=" << height
+			  << " (i,j) = (" << i << ", " << j
 			  << "), parent : " << (parent == nullptr ? -1 : parent->number) << std::endl;
 }
 
